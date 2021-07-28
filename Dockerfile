@@ -7,9 +7,8 @@ COPY ./ jupyter_gwion_kernel/
 RUN pip install --no-cache-dir jupyter_gwion_kernel/
 RUN cd jupyter_gwion_kernel && install_gwion_kernel --user
 
-RUN git clone https://github.com/fennecdjay/gwion
+RUN git clone --recursive https://github.com/fennecdjay/gwion
 WORKDIR /tmp/gwion
-RUN git submodule update --init util ast
 RUN make
 
 USER root
